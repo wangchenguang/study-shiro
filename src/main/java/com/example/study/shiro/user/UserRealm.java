@@ -54,7 +54,7 @@ public class UserRealm extends AuthorizingRealm {
     /**
      * 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。
      *
-     * @param token
+     * @param token 验证对象
      * @return
      * @throws AuthenticationException
      */
