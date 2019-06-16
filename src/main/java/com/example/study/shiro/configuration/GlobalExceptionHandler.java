@@ -2,6 +2,7 @@ package com.example.study.shiro.configuration;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthenticatedException;
@@ -39,12 +40,32 @@ public class GlobalExceptionHandler {
         LOGGER.debug("{} was thrown", e.getClass(), e);
     }
 
+    /**
+     * 该用户不存在
+     *
+     * @param e
+     */
     @ExceptionHandler(AuthenticationException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public void handleUnknownAuthenticationException(AuthenticationException e) {
         LOGGER.debug("{} was thrown", e.getClass(), e);
     }
 
+    /**
+     * 用户禁用异常
+     *
+     * @param e
+     */
+    @ExceptionHandler(LockedAccountException.class)
+    public void handleLockedAccountException(LockedAccountException e) {
+
+    }
+
+    /**
+     * 密码错误.
+     *
+     * @param e
+     */
     @ExceptionHandler(IncorrectCredentialsException.class)
     @ResponseStatus(HttpStatus.FORBIDDEN)
     public void handleIncorrectCredentialsException(IncorrectCredentialsException e) {

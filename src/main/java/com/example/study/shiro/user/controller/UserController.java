@@ -9,6 +9,9 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.Map;
 
 /**
  * @author wangchenguang
@@ -23,8 +26,15 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/login")
+    @ResponseBody
     public String login(User user) {
         userService.login(user);
         return null;
     }
+
+
+    public Map<String, Object> register() {
+        return null;
+    }
+
 }
